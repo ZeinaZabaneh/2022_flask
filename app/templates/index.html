@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Page Description" />
+    <title>Colourdle</title>
+    <!-- CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+
+    <!-- JavaScript and jQuery -->
+
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+
+    <!-- <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.js"></script> -->
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Font Awesome (for icons) -->
+    <script
+      src="https://kit.fontawesome.com/d880e4a37f.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+  </head>
+  <body>
+    <div class="popup dark light_bg">
+      <h2 id="HowToPlay">How to Play</h2>
+      <p>
+        Guess the <b>Colourdle</b> code in 8 tries.<br /><br />
+        Click on each square to cycle through the colours to choose your
+        code.<br /><br />
+        Hit the enter button to submit your guess.<br /><br />
+        After each guess, the two hint tiles on the right of the row will show
+        how many colours have been guessed correctly and in the right spot
+        (green) and how many colours have been guessed correctly but in the
+        wrong spot (yellow). {{ user.username }}
+      </p>
+      <a class="close-btn light" href="#" id="close">Let's Go</a>
+    </div>
+    <div class="SettingsPopup dark light_bg">
+      <i class="fa-solid fa-circle-xmark dark" id="Xclose"></i>
+      <h2 id="Settings">Settings</h2>
+      <div id="dark-mode">
+        <p>Dark Mode</p>
+      </div>
+      <div id="dm-toggle">
+        <label class="toggle">
+          <input type="checkbox" onclick="darkFunc()" />
+          <span class="slider round"></span>
+          <span class="labels" data-on="ON" data-off="OFF"></span>
+        </label>
+      </div>
+    </div>
+    <header>
+      <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#">Colourdle</a>
+            <!-- <li class="nav-item"> -->
+            <a href="#" class="nav-link d-flex flex-column">
+              <i class="fa-solid fa-circle-info dark" id="info"></i>
+            </a>
+            <!-- </li> -->
+            <!-- <li class="nav-item"> -->
+            <a href="#" class="nav-link d-flex flex-column">
+              <i class="fa-solid fa-gear dark" id="settings"></i>
+            </a>
+            <!-- <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarNav"
+                aria-controls="navbarNav"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+              >
+                <span class="navbar-toggler-icon"></span>
+              </button> -->
+          </div>
+          <!-- <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav">
+  
+                </li>
+              </ul>
+            </div> -->
+        </div>
+      </nav>
+    </header>
+    <section class="game-area">
+      <div class="game">
+        <div class="grid-container" id="arrow-container">
+          <div class="arrow-grid-item" id="arrow_r1">
+            <i
+              class="fa-solid fa-angles-right arrow_r1"
+              id="arrow-row-1"
+              style="display: block"
+            ></i>
+          </div>
+          <div class="arrow-grid-item" id="arrow_r2">
+            <i
+              class="fa-solid fa-angles-right arrow_r2"
+              id="arrow-row-2"
+              style="display: none"
+            ></i>
+          </div>
+          <div class="arrow-grid-item" name="arrow">
+            <i
+              class="fa-solid fa-angles-right arrow_r3"
+              id="arrow-row-3"
+              style="display: none"
+            ></i>
+          </div>
+          <div class="arrow-grid-item" name="arrow">
+            <i
+              class="fa-solid fa-angles-right arrow_r4"
+              id="arrow-row-4"
+              style="display: none"
+            ></i>
+          </div>
+          <div class="arrow-grid-item" name="arrow">
+            <i
+              class="fa-solid fa-angles-right arrow_r5"
+              id="arrow-row-5"
+              style="display: none"
+            ></i>
+          </div>
+          <div class="arrow-grid-item" name="arrow">
+            <i
+              class="fa-solid fa-angles-right arrow_r6"
+              id="arrow-row-6"
+              style="display: none"
+            ></i>
+          </div>
+          <div class="arrow-grid-item" name="arrow">
+            <i
+              class="fa-solid fa-angles-right arrow_r7"
+              id="arrow-row-7"
+              style="display: none"
+            ></i>
+          </div>
+          <div class="arrow-grid-item" name="arrow">
+            <i
+              class="fa-solid fa-angles-right arrow_r8"
+              id="arrow-row-8"
+              style="display: none"
+            ></i>
+          </div>
+        </div>
+        <div class="grid-container" id="guess-container">
+          <div
+            class="grid-item row-1"
+            id="row_1_box_1"
+            data-colour_id="19"
+          ></div>
+          <div
+            class="grid-item row-1"
+            id="row_1_box_2"
+            data-colour_id="19"
+          ></div>
+          <div
+            class="grid-item row-1"
+            id="row_1_box_3"
+            data-colour_id="19"
+          ></div>
+          <div
+            class="grid-item row-1"
+            id="row_1_box_4"
+            data-colour_id="19"
+          ></div>
+
+          <div
+            class="grid-item row-2"
+            id="row_2_box_1"
+            data-colour_id="19"
+          ></div>
+          <div
+            class="grid-item row-2"
+            id="row_2_box_2"
+            data-colour_id="19"
+          ></div>
+          <div
+            class="grid-item row-2"
+            id="row_2_box_3"
+            data-colour_id="19"
+          ></div>
+          <div
+            class="grid-item row-2"
+            id="row_2_box_4"
+            data-colour_id="19"
+          ></div>
+
+          <div
+            class="grid-item row-3"
+            id="row_3_box_1"
+            data-colour_id="19"
+          ></div>
+          <div
+            class="grid-item row-3"
+            id="row_3_box_2"
+            data-colour_id="19"
+          ></div>
+          <div
+            class="grid-item row-3"
+            id="row_3_box_3"
+            data-colour_id="19"
+          ></div>
+          <div
+            class="grid-item row-3"
+            id="row_3_box_4"
+            data-colour_id="19"
+          ></div>
+
+          <div
+            class="grid-item row-4"
+            id="row_4_box_1"
+            data-colour_id="19"
+          ></div>
+          <div
+            class="grid-item row-4"
+            id="row_4_box_2"
+            data-colour_id="19"
+          ></div>
+          <div
+            class="grid-item row-4"
+            id="row_4_box_3"
+            data-colour_id="19"
+          ></div>
+          <div
+            class="grid-item row-4"
+            id="row_4_box_4"
+            data-colour_id="19"
+          ></div>
+
+          <div
+            class="grid-item row-5"
+            id="row_5_box_1"
+            data-colour_id="19"
+          ></div>
+          <div
+            class="grid-item row-5"
+            id="row_5_box_2"
+            data-colour_id="19"
+          ></div>
+          <div
+            class="grid-item row-5"
+            id="row_5_box_3"
+            data-colour_id="19"
+          ></div>
+          <div
+            class="grid-item row-5"
+            id="row_5_box_4"
+            data-colour_id="19"
+          ></div>
+
+          <div
+            class="grid-item row-6"
+            id="row_6_box_1"
+            data-colour_id="19"
+          ></div>
+          <div
+            class="grid-item row-6"
+            id="row_6_box_2"
+            data-colour_id="19"
+          ></div>
+          <div
+            class="grid-item row-6"
+            id="row_6_box_3"
+            data-colour_id="19"
+          ></div>
+          <div
+            class="grid-item row-6"
+            id="row_6_box_4"
+            data-colour_id="19"
+          ></div>
+
+          <div
+            class="grid-item row-7"
+            id="row_7_box_1"
+            data-colour_id="19"
+          ></div>
+          <div
+            class="grid-item row-7"
+            id="row_7_box_2"
+            data-colour_id="19"
+          ></div>
+          <div
+            class="grid-item row-7"
+            id="row_7_box_3"
+            data-colour_id="19"
+          ></div>
+          <div
+            class="grid-item row-7"
+            id="row_7_box_4"
+            data-colour_id="19"
+          ></div>
+
+          <div
+            class="grid-item row-8"
+            id="row_8_box_1"
+            data-colour_id="19"
+          ></div>
+          <div
+            class="grid-item row-8"
+            id="row_8_box_2"
+            data-colour_id="19"
+          ></div>
+          <div
+            class="grid-item row-8"
+            id="row_8_box_3"
+            data-colour_id="19"
+          ></div>
+          <div
+            class="grid-item row-8"
+            id="row_8_box_4"
+            data-colour_id="19"
+          ></div>
+        </div>
+        <div class="grid-container" id="hint-container">
+          <div class="grid-item" id="correct_place_row_1"></div>
+          <div class="grid-item" id="out_of_place_row_1"></div>
+
+          <div class="grid-item" id="correct_place_row_2"></div>
+          <div class="grid-item" id="out_of_place_row_2"></div>
+
+          <div class="grid-item" id="correct_place_row_3"></div>
+          <div class="grid-item" id="out_of_place_row_3"></div>
+
+          <div class="grid-item" id="correct_place_row_4"></div>
+          <div class="grid-item" id="out_of_place_row_4"></div>
+
+          <div class="grid-item" id="correct_place_row_5"></div>
+          <div class="grid-item" id="out_of_place_row_5"></div>
+
+          <div class="grid-item" id="correct_place_row_6"></div>
+          <div class="grid-item" id="out_of_place_row_6"></div>
+
+          <div class="grid-item" id="correct_place_row_7"></div>
+          <div class="grid-item" id="out_of_place_row_7"></div>
+
+          <div class="grid-item" id="correct_place_row_8"></div>
+          <div class="grid-item" id="out_of_place_row_8"></div>
+        </div>
+      </div>
+      <div class="btn">
+        <button
+          type="button"
+          class="button"
+          id="enter_button"
+          onclick="row_change()"
+        >
+          Play
+        </button>
+      </div>
+    </section>
+    <footer class="game-footer">
+      <p>© 2022, Benjamin Willcocks & Zeina Zabaneh</p>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>
