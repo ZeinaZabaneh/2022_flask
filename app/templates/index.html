@@ -51,7 +51,7 @@
         After each guess, the two hint tiles on the right of the row will show
         how many colours have been guessed correctly and in the right spot
         (green) and how many colours have been guessed correctly but in the
-        wrong spot (yellow). {{ user.username }}
+        wrong spot (yellow).
       </p>
       <a class="close-btn light" href="#" id="close">Let's Go</a>
     </div>
@@ -69,6 +69,14 @@
         </label>
       </div>
     </div>
+    <div class="AccountPopUp dark light_bg">
+      <i class="fa-solid fa-circle-xmark dark" id="XcloseProfile"></i>
+      <h2 id="Profile">Profile</h2>
+      <div>
+        <a href="{{ url_for('login') }}">login</a>
+      </div>
+    </div>
+
     <header>
       <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
@@ -77,6 +85,9 @@
             <!-- <li class="nav-item"> -->
             <a href="#" class="nav-link d-flex flex-column">
               <i class="fa-solid fa-circle-info dark" id="info"></i>
+            </a>
+            <a href="#" class="nav-link d-flex flex-column">
+              <i class="fa-solid fa-user dark" id="profile"></i>
             </a>
             <!-- </li> -->
             <!-- <li class="nav-item"> -->
@@ -107,7 +118,7 @@
     <section class="game-area">
       <div class="game">
         <div class="grid-container" id="arrow-container">
-          <div class="arrow-grid-item" id="arrow_r1">
+          <!-- <div class="arrow-grid-item" id="arrow_r1">
             <i
               class="fa-solid fa-angles-right arrow_r1"
               id="arrow-row-1"
@@ -162,9 +173,16 @@
               id="arrow-row-8"
               style="display: none"
             ></i>
-          </div>
+          </div> -->
         </div>
         <div class="grid-container" id="guess-container">
+          <div class="arrow-grid-item" name="arrow">
+            <i
+              class="fa-solid fa-angles-right arrow_r1"
+              id="arrow-row-1"
+              style="display: none"
+            ></i>
+          </div>
           <div
             class="grid-item row-1"
             id="row_1_box_1"
@@ -185,7 +203,13 @@
             id="row_1_box_4"
             data-colour_id="19"
           ></div>
-
+          <div class="arrow-grid-item" name="arrow">
+            <i
+              class="fa-solid fa-angles-right arrow_r2"
+              id="arrow-row-2"
+              style="display: none"
+            ></i>
+          </div>
           <div
             class="grid-item row-2"
             id="row_2_box_1"
@@ -206,7 +230,13 @@
             id="row_2_box_4"
             data-colour_id="19"
           ></div>
-
+          <div class="arrow-grid-item" name="arrow">
+            <i
+              class="fa-solid fa-angles-right arrow_r3"
+              id="arrow-row-3"
+              style="display: none"
+            ></i>
+          </div>
           <div
             class="grid-item row-3"
             id="row_3_box_1"
@@ -227,7 +257,13 @@
             id="row_3_box_4"
             data-colour_id="19"
           ></div>
-
+          <div class="arrow-grid-item" name="arrow">
+            <i
+              class="fa-solid fa-angles-right arrow_r4"
+              id="arrow-row-4"
+              style="display: none"
+            ></i>
+          </div>
           <div
             class="grid-item row-4"
             id="row_4_box_1"
@@ -248,7 +284,13 @@
             id="row_4_box_4"
             data-colour_id="19"
           ></div>
-
+          <div class="arrow-grid-item" name="arrow">
+            <i
+              class="fa-solid fa-angles-right arrow_r5"
+              id="arrow-row-5"
+              style="display: none"
+            ></i>
+          </div>
           <div
             class="grid-item row-5"
             id="row_5_box_1"
@@ -269,7 +311,13 @@
             id="row_5_box_4"
             data-colour_id="19"
           ></div>
-
+          <div class="arrow-grid-item" name="arrow">
+            <i
+              class="fa-solid fa-angles-right arrow_r6"
+              id="arrow-row-6"
+              style="display: none"
+            ></i>
+          </div>
           <div
             class="grid-item row-6"
             id="row_6_box_1"
@@ -290,7 +338,13 @@
             id="row_6_box_4"
             data-colour_id="19"
           ></div>
-
+          <div class="arrow-grid-item" name="arrow">
+            <i
+              class="fa-solid fa-angles-right arrow_r7"
+              id="arrow-row-7"
+              style="display: none"
+            ></i>
+          </div>
           <div
             class="grid-item row-7"
             id="row_7_box_1"
@@ -311,7 +365,13 @@
             id="row_7_box_4"
             data-colour_id="19"
           ></div>
-
+          <div class="arrow-grid-item" name="arrow">
+            <i
+              class="fa-solid fa-angles-right arrow_r8"
+              id="arrow-row-8"
+              style="display: none"
+            ></i>
+          </div>
           <div
             class="grid-item row-8"
             id="row_8_box_1"
@@ -373,6 +433,6 @@
     <footer class="game-footer">
       <p>© 2022, Benjamin Willcocks & Zeina Zabaneh</p>
     </footer>
-    <script src="script.js"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
   </body>
 </html>

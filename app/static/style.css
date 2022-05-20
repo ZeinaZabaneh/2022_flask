@@ -41,7 +41,7 @@ html, body{
     background-color: var(--dark); 
 }
 
-.popup, .SettingsPopup{
+.popup, .SettingsPopup, .AccountPopUp{
     border-radius: 8px;
     border: 1px solid var(--color-tone-6);
     /* background-color: #ffffff; */
@@ -60,15 +60,15 @@ html, body{
     opacity: 1;
 }
 
-.SettingsPopup{
-    width: 40%;
+.SettingsPopup, .AccountPopUp{
+    width: 30%;
     display: none;
 }
 
 .popup h2{
     margin-top: -20px;
  }
- .popup p, .SettingsPopup p{
+ .popup p, .SettingsPopup p, .AccountPopUp p{
      font-size: 18px;
      text-align: justify;
      margin: 20px 0;
@@ -95,7 +95,7 @@ html, body{
     right: 5%;
 }
 
-#HowToPlay, #Settings{
+#HowToPlay, #Settings, #Profile{
     font-family: 'Pacifico', cursive;
     font-size: 35px;
     text-align: center;
@@ -225,7 +225,7 @@ html, body{
 
   .navbar-brand {
     font-family: 'Pacifico', cursive;
-    font-size: 50px;
+    font-size: 65px;
     background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red);
     -webkit-background-clip: text;
     -moz-background-clip: text;
@@ -257,7 +257,7 @@ html, body{
     justify-content: center;
     align-items: center;
 }
-.fa-gear, .fa-circle-info, .fa-circle-xmark {
+.fa-gear, .fa-circle-info, .fa-circle-xmark, .fa-user {
     /* color: black; */
     font-size: 22px;
 }
@@ -273,7 +273,7 @@ html, body{
 
 #guess-container {
     display: grid;
-    grid-template-columns: auto auto auto auto;
+    grid-template-columns: auto auto auto auto auto;
     padding: 10px;
     gap: 5px 5px;
     align-content: center;
@@ -288,46 +288,10 @@ html, body{
     grid-template-columns: auto auto;
     padding: 10px;
     gap: 5px 5px;
-    align-content: center;
+    /* align-content: center;
     justify-content: center;
-    text-align: center;
+    text-align: center; */
     /* height: 100vh; */
-  }
-  #hint-container .grid-item {
-    border-radius: 50px;
-  }
-  .grid-item {
-    /* background-color: rgba(255, 255, 255, 0.8); */
-    border: 1px solid lightslategray;
-    padding: 20px;
-    font-size: 20px;
-    text-align: center;
-    border-radius: 3px;
-    width: 3.5vw;
-    height: 6vh;
-  }
-
-  .arrow-grid-item{
-    /* background-color: rgba(255, 255, 255, 0.8); */
-border: none;
-padding: 10px;
-font-size: 24px;
-text-align: center;
-justify-content: center;
-width: 5vw;
-height: 5vh;
-}
-
-  .game {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-grow: 1;
-      /* overflow: hidden; */
-      /* margin: auto; */
-      /* height: 90vh; */
-      width: 100vw;
-      height: 70vh;
   }
 
   #arrow-container{
@@ -339,6 +303,72 @@ height: 5vh;
     justify-content: center;
     text-align: center;
   }
+  
+/* If the screen size is 601px wide or more, set the font-size of <div> to 80px */
+/* @media screen and (min-width: 601px) {
+    .grid-item, {
+      font-size: 30px;
+      
+    }
+  }
+  @media screen and (min-width: 601px) {
+    .arrow-grid-item {
+      font-size: 60px;
+      
+    }
+  } */
+  
+  /* If the screen size is 600px wide or less, set the font-size of <div> to 30px */
+  /* @media screen and (max-width: 600px) {
+    .grid-item, .arrow-grid-item {
+      font-size: 15px;
+      padding-bottom: 10px;
+    }
+  } */
+  .fa-angles-right{
+      font-size: 24px;
+      justify-content: center;
+  }
+
+  #hint-container .grid-item {
+    border-radius: 50px;
+  }
+  .grid-item{
+    /* background-color: rgba(255, 255, 255, 0.8); */
+    border: 1px solid lightslategray;
+    padding: 20px;
+    /* font-size: 26px; */
+    text-align: center;
+    justify-content: center;
+    border-radius: 3px;
+    width: 3.5vw;
+    height: 5vh;
+  }
+
+  .arrow-grid-item{
+border: none;
+/* padding: 10px; */
+/* font-size: 24px; */
+text-align: center;
+justify-content: center;
+width: 3.5vw;
+height: 5vh;
+align-items: center;
+}
+
+  .game {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-grow: 1;
+      /* overflow: hidden; */
+      /* margin: auto; */
+      /* height: 90vh; */
+      width: 100vw;
+      height: 50vh;
+  }
+
+
 
   .game-footer{
       font-size: 12px;
@@ -370,6 +400,8 @@ align-items: center;
     position: relative;
     animation: colour_play_button 10s infinite;
     z-index: 0;
+    color: white;
+    font-weight: bold;
     }
 
     .btn{align-items: center;
