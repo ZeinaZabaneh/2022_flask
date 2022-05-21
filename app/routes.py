@@ -12,11 +12,10 @@ def index():
 
     return render_template('index.html')
 
-
-import jsonify
+from flask import jsonify
 
 @app.route('/pass_val',methods=['POST'])
 def pass_val():
     name=request.args.get('value')
     print('value',name)
-    #return jsonify({'reply':'success'})
+    return jsonify({'reply':'success'})
