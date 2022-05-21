@@ -1,7 +1,6 @@
 from app import db
 from app import login
 from datetime import datetime
-import sqlite3
 
 from flask_login import UserMixin
 
@@ -16,4 +15,4 @@ class User(UserMixin, db.Model):
     score = db.Column(db.Integer)
 
     def __repr__(self):
-        return '<Score {}>'.format(self.score)
+        return '<IP_Address {}>'.format(self.user_IPAddress)

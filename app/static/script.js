@@ -64,6 +64,7 @@ console.log(current_theme)
 
 var code_to_guess = [0,0,0,0];
 var colours = ["red","blue","green","orange","pink","yellow"];
+var message = ["Genius!", "Unbelievable!", "Sensational!", "Amazing!", "Great!", "Not Bad!", "Phew, just made it!", "Ooops! Better luck next time!"]
 
 for(let i=0; i<code_to_guess.length; i++){
 	code_to_guess[i] = Math.floor(Math.random() * colours.length);
@@ -142,6 +143,11 @@ function row_change() {
 		if(correct_place_count==4){
 			correct_guess = true;
 		}
+
+        if(correct_guess){
+            document.getElementById("Message").innerHTML = message[active_row]
+            document.getElementById("Message").style.display = "block"
+            }
 	}
 
 	$('#correct_place_row_'+(active_row-1)).text(correct_place_count);
@@ -151,10 +157,6 @@ function row_change() {
 	$('#out_of_place_row_'+(active_row-1)).css("background-color", "orange");
 
 	$('.row-'+(active_row-1)).css('pointer-events', 'none');
-
-	if(correct_guess){
-		active_row=0;
-	}
 
 	$('#enter_button').css('pointer-events', 'none');
 	$('#enter_button').css('opacity', '40%');
