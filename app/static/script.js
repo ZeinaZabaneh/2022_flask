@@ -16,6 +16,7 @@ document.querySelector("#info").addEventListener("click", function(){
 });
 
 document.querySelector("#close").addEventListener("click", function(){
+    console.log("click")
     document.querySelector(".popup").style.display = "none";
 });
 
@@ -148,6 +149,12 @@ function row_change() {
             document.getElementById("Message").innerHTML = message[active_row]
             document.getElementById("Message").style.display = "block"
             }
+        
+        if(active_row>8){
+            document.getElementById("Message").innerHTML = message[7]
+            document.getElementById("Message").style.display = "block"
+            }
+        }
 	}
 
 	$('#correct_place_row_'+(active_row-1)).text(correct_place_count);
