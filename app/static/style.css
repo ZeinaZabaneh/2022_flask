@@ -61,7 +61,7 @@ html, body{
 }
 
 .SettingsPopup, .AccountPopUp, .SuccessPopUp{
-    width: 30%;
+    width: 50%;
     display: none;
 }
 
@@ -300,7 +300,7 @@ html, body{
     /* height: 100vh; */
   }
 
-  #arrow-container{
+  /* #arrow-container{
     display: grid;
     grid-template-columns: auto;
     padding: 10px;
@@ -308,7 +308,7 @@ html, body{
     align-content: center;
     justify-content: center;
     text-align: center;
-  }
+  } */
   
 /* If the screen size is 601px wide or more, set the font-size of <div> to 80px */
 /* @media screen and (min-width: 601px) {
@@ -350,6 +350,7 @@ html, body{
     border-radius: 3px;
     width: 3.5vw;
     height: 5vh;
+    font-weight: bold;
   }
 
   .arrow-grid-item{
@@ -358,7 +359,8 @@ border: none;
 /* font-size: 24px; */
 text-align: center;
 justify-content: center;
-width: 3.5vw;
+padding-top: 30%;
+width: 5vw;
 height: 5vh;
 align-items: center;
 }

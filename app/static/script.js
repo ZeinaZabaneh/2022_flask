@@ -64,7 +64,7 @@ console.log(current_theme)
 
 var code_to_guess = [0,0,0,0];
 var colours = ["red","blue","green","orange","pink","yellow"];
-var message = ["Ooops! Better luck next time!", "Phew! Just made it", "Not bad!", "Great!", "Amazing!", "Sensational!","Unbelievable!","Genuis!"]
+var message = ["Genius!", "Unbelievable!", "Sensational!", "Amazing!", "Great!", "Not Bad!", "Phew, just made it!", "Ooops! Better luck next time!"]
 
 for(let i=0; i<code_to_guess.length; i++){
 	code_to_guess[i] = Math.floor(Math.random() * colours.length);
@@ -144,10 +144,22 @@ function row_change() {
 			correct_guess = true;
 		}
 
+        console.log(active_row)
+        console.log(user_guess.length)
         if(correct_guess){
-            document.getElementById("Message").innerHTML = message[active_row]
-            document.getElementById("Message").style.display = "block"
+            document.getElementById("Message").innerHTML = message[active_row - 2]
+            document.getElementById("success").style.display = "block"
             }
+        
+        if(correct_guess == false && active_row==9){
+            console.log("check")
+            document.getElementById("Message").innerHTML = message[7]
+            document.getElementById("success").style.display = "block"
+            }
+        
+            document.getElementById("MessageClose").addEventListener("click", function(){
+                location.reload(document.querySelector(".popup").style.display = "none");
+            });
 	}
 
 	$('#correct_place_row_'+(active_row-1)).text(correct_place_count);
