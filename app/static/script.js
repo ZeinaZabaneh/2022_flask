@@ -16,7 +16,6 @@ document.querySelector("#info").addEventListener("click", function(){
 });
 
 document.querySelector("#close").addEventListener("click", function(){
-    console.log("click")
     document.querySelector(".popup").style.display = "none";
 });
 
@@ -65,7 +64,7 @@ console.log(current_theme)
 
 var code_to_guess = [0,0,0,0];
 var colours = ["red","blue","green","orange","pink","yellow"];
-var message = ["Genius!", "Unbelievable!", "Sensational!", "Amazing!", "Great!", "Not Bad!", "Phew, just made it!", "Ooops! Better luck next time!"]
+var message = ["Ooops! Better luck next time!", "Phew! Just made it", "Not bad!", "Great!", "Amazing!", "Sensational!","Unbelievable!","Genuis!"]
 
 for(let i=0; i<code_to_guess.length; i++){
 	code_to_guess[i] = Math.floor(Math.random() * colours.length);
@@ -85,6 +84,7 @@ function row_change() {
 
 		console.log("guess check started")
         
+
 		var comparison_guess = code_to_guess.slice();
 		var user_guess = [];
 
@@ -148,12 +148,6 @@ function row_change() {
             document.getElementById("Message").innerHTML = message[active_row]
             document.getElementById("Message").style.display = "block"
             }
-        
-        if(active_row>8){
-            document.getElementById("Message").innerHTML = message[7]
-            document.getElementById("Message").style.display = "block"
-            }
-        }
 	}
 
 	$('#correct_place_row_'+(active_row-1)).text(correct_place_count);
@@ -164,8 +158,7 @@ function row_change() {
 
 	$('.row-'+(active_row-1)).css('pointer-events', 'none');
 
-	if(correct_guess || active_row>8){
-		number_guesses = active_row;
+	if(correct_guess){
 		active_row=0;
 	}
 
@@ -219,6 +212,8 @@ function row_change() {
 	});
 
 
+}
+
 const animateCSS = (element, animation, prefix = 'animate__') =>
 
   // We create a Promise and return it
@@ -241,29 +236,3 @@ const animateCSS = (element, animation, prefix = 'animate__') =>
 
     node.addEventListener('animationend', handleAnimationEnd, {once: true});
 });
-
-
-function pass_values(value_to_pass) {
-	var pass_to_python = value_to_pass;
- 
-				 $.ajax(
-				 {
-					 type:'POST',
-					 contentType:'application/json;charset-utf-08',
-					 dataType:'json',
-					 url:'http://127.0.0.1:5000/pass_val?value='+pass_to_python ,
-					 success:function (data) {
-						 var reply=data.reply;
-						 if (reply=="success")
-						 {
-							 return;
-						 }
-						 else
-							 {
-							 alert("some error ocured in session agent")
-							 }
- 
-					 }
-				 }
-			 );
- }
