@@ -1,3 +1,5 @@
+"use strict";
+
 // How to play pop-up
 
 window.addEventListener("load", function(){
@@ -33,9 +35,9 @@ document.querySelector("#profile").addEventListener("click", function(){
     document.querySelector(".AccountPopUp").style.display = "block";
 });
 
-document.querySelector("#XcloseProfile").addEventListener("click", function(){
-document.querySelector(".AccountPopUp").style.display = "none";
-});
+//document.querySelector("#XcloseProfile").addEventListener("click", function(){
+//document.querySelector(".AccountPopUp").style.display = "none";
+//});
 
 function darkFunc() {
 // $(document).ready(function(){
@@ -60,7 +62,14 @@ console.log(current_theme)
 
 // Game Functionality
 
-var code_to_guess = [1,2,3,4];
+var code_to_guess = [0,0,0,0];
+var colours = ["red","blue","green","orange","pink","yellow"];
+
+for(let i=0; i<code_to_guess.length; i++){
+	code_to_guess[i] = Math.floor(Math.random() * colours.length);
+}
+
+console.log(code_to_guess);
 
 var correct_guess = false;
 
@@ -89,10 +98,10 @@ function row_change() {
 			user_guess.push(guess);
 		}
 
-		console.log("users guess:");
-		console.log(user_guess);
-		console.log("actual code");
-		console.log(comparison_guess);
+		//console.log("users guess:");
+		//console.log(user_guess);
+		//console.log("actual code");
+		//console.log(comparison_guess);
 
 		var out_of_place_count = 0;
 		var correct_place_count = 0;
@@ -103,7 +112,7 @@ function row_change() {
 			var actual = comparison_guess[i];
 
 			if(parseInt(guess)==actual){
-				console.log("guess matched");
+				//console.log("guess matched");
 				correct_place_count += 1;
 				user_guess.splice(i, 1);
 				comparison_guess.splice(i, 1);
@@ -127,19 +136,25 @@ function row_change() {
 					i -= 1;
 					break;
 				}
+			}
+
 		}
-
+		if(correct_place_count==4){
+			correct_guess = true;
+		}
 	}
 
-		$('#correct_place_row_'+(active_row-1)).text(correct_place_count);
-		$('#correct_place_row_'+(active_row-1)).css("background-color", "YellowGreen");
+	$('#correct_place_row_'+(active_row-1)).text(correct_place_count);
+	$('#correct_place_row_'+(active_row-1)).css("background-color", "YellowGreen");
 
-		$('#out_of_place_row_'+(active_row-1)).text(out_of_place_count);
-		$('#out_of_place_row_'+(active_row-1)).css("background-color", "orange");
-	}
-
+	$('#out_of_place_row_'+(active_row-1)).text(out_of_place_count);
+	$('#out_of_place_row_'+(active_row-1)).css("background-color", "orange");
 
 	$('.row-'+(active_row-1)).css('pointer-events', 'none');
+
+	if(correct_guess){
+		active_row=0;
+	}
 
 	$('#enter_button').css('pointer-events', 'none');
 	$('#enter_button').css('opacity', '40%');
@@ -149,12 +164,10 @@ function row_change() {
 	$('.row-'+active_row).click(function(event) {
 
 		var box_id = "#"+$(this).attr('id');
-	  
-		var colours = ["red","blue","green","orange","pink","yellow"];
 
 		animateCSS(document.getElementById($(this).attr('id')), 'bounceIn');
 	  
-		$(box_id).attr('data-colour_id', ((parseInt($(box_id).attr('data-colour_id'))+1)%5))
+		$(box_id).attr('data-colour_id', ((parseInt($(box_id).attr('data-colour_id'))+1)%colours.length))
 	  
 		$(box_id).css('background-color', colours[parseInt($(box_id).attr('data-colour_id'))]);
 
@@ -177,7 +190,7 @@ function row_change() {
 		for(let box of boxes_in_active_row){
 
 			var check = box.getAttribute("data-colour_id");
-			if(check=='19'){
+			if(check=='-1'){
 				valid_row_input = false;
 			}
 
