@@ -12,3 +12,9 @@ def index():
 
     return render_template('index.html')
 
+
+@app.route('/pass_val',methods=['POST'])
+def pass_val():
+    name=request.args.get('value')
+    print('name',name)
+    return jsonify({'reply':'success'})

@@ -41,7 +41,7 @@ html, body{
     background-color: var(--dark); 
 }
 
-.popup, .SettingsPopup, .AccountPopUp{
+.popup, .SettingsPopup, .AccountPopUp, .SuccessPopUp{
     border-radius: 8px;
     border: 1px solid var(--color-tone-6);
     /* background-color: #ffffff; */
@@ -60,7 +60,7 @@ html, body{
     opacity: 1;
 }
 
-.SettingsPopup, .AccountPopUp{
+.SettingsPopup, .AccountPopUp, .SuccessPopUp{
     width: 30%;
     display: none;
 }
@@ -94,7 +94,7 @@ html, body{
     right: 5%;
 }
 
-#HowToPlay, #Settings, #Profile{
+#HowToPlay, #Settings, #Profile, #Message{
     font-family: 'Pacifico', cursive;
     font-size: 35px;
     text-align: center;
