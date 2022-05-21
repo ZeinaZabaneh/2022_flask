@@ -83,7 +83,6 @@ function row_change() {
 
 		console.log("guess check started")
         
-
 		var comparison_guess = code_to_guess.slice();
 		var user_guess = [];
 
@@ -152,7 +151,8 @@ function row_change() {
 
 	$('.row-'+(active_row-1)).css('pointer-events', 'none');
 
-	if(correct_guess){
+	if(correct_guess || active_row>8){
+		number_guesses = active_row;
 		active_row=0;
 	}
 
@@ -230,3 +230,29 @@ const animateCSS = (element, animation, prefix = 'animate__') =>
 
     node.addEventListener('animationend', handleAnimationEnd, {once: true});
 });
+
+
+function pass_values(value_to_pass) {
+	var pass_to_python = value_to_pass;
+ 
+				 $.ajax(
+				 {
+					 type:'POST',
+					 contentType:'application/json;charset-utf-08',
+					 dataType:'json',
+					 url:'http://127.0.0.1:5000/pass_val?value='+pass_to_python ,
+					 success:function (data) {
+						 var reply=data.reply;
+						 if (reply=="success")
+						 {
+							 return;
+						 }
+						 else
+							 {
+							 alert("some error ocured in session agent")
+							 }
+ 
+					 }
+				 }
+			 );
+ }
