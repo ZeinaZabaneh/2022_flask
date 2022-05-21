@@ -151,8 +151,15 @@ function row_change() {
 
 	$('.row-'+(active_row-1)).css('pointer-events', 'none');
 
-	if(correct_guess || active_row>8){
-		number_guesses = active_row;
+	if(correct_guess){
+		pass_values(active_row-1);
+		var number_guesses = active_row;
+		active_row=0;
+	}
+
+	else if(active_row>8){
+		pass_values(active_row);
+		var number_guesses = active_row;
 		active_row=0;
 	}
 
@@ -200,11 +207,9 @@ function row_change() {
 			$('#enter_button').css('pointer-events', 'auto');
 			$('#enter_button').css('opacity', '100%');
 			$('#enter_button').text('Check!');
-		}
-	
+		}	
 	
 	});
-
 
 }
 
