@@ -2,9 +2,31 @@
 
 A daily colour code breaker game.
 
-A siple flask app where the user must try to guess the colour code in less than 8 tries.
+A simple flask app where the user must try to guess the colour code in less than 8 tries.
 
 ### Architechture
+-HTML-
+1. Registration page - register.html, the user will create a username and the username is passed to the GameUser database
+2. Login page - login.html, the user logs in using their created username 
+3. Game page - index.html, the game page with the user's username displayed
+
+-CSS-
+1. Styling for all three html pages - style.css
+
+-JS-
+1. Javascript for all three html pages - script.js
+
+-PY-
+1. Application factory and Python package identifiaction for directory - __init__.py
+2. Python shell for databases - colourdle.py
+3. Python config classes - config.py
+4. Flask forms to retrieve user input - forms.py
+5. Defining the databases - models.py
+6. Python code handling exchange of data between html, javascript and python - routes.py
+7. Unit tests - test.py
+
+-DB-
+1. File containing the two databases - app.db, the databases contained are Game which stores the users scores, date score was obtained, and the username of the user and GameUser which stores the user's username and information related to the user
 
 ## Getting Started
 
@@ -78,3 +100,5 @@ via localhost
 ## Acknowledgments
 
 - Built following CITS5505 Workshops and Labs as well as the [Flask Mega-Tutorial](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world) by **Miguel Grinberg**.
+- Micheal Bauer question solution referenced at https://stackoverflow.com/questions/59975596/connect-javascript-to-python-script-with-flask
+- user9501250 question solution referenced at https://stackoverflow.com/questions/2894946/passing-javascript-variable-to-python

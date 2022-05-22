@@ -78,7 +78,7 @@ def histogram():
     scores = [score_entry.score for score_entry in data]
     totals = []
     max_score = 0
-    for i in range(10):
+    for i in range(1,9):
         score_count = 0
         for score in scores:
             if score==i:
