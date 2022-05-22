@@ -99,10 +99,6 @@
     </header>
     {% block content %}
     <h1 id="Welcome">Hi, {{ current_user.username }}!</h1>
-    {% for post in posts %}
-    <div>
-      <p>{{ post.author.username }} says: <b>{{ post.body }}</b></p>
-    </div>
     {% endfor %} {% endblock %}
     <section class="game-area">
       <div class="game">
