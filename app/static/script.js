@@ -2,71 +2,59 @@
 
 // How to play pop-up
 
-window.addEventListener("load", function(){
-    setTimeout(
-        function open(event){
-            document.querySelector(".popup").style.display = "block";
-        },
-        1000 
-    )
+window.addEventListener("load", function () {
+	setTimeout(
+		function open(event) {
+			document.querySelector(".popup").style.display = "block";
+		},
+		1000
+	)
 });
 
-document.querySelector("#info").addEventListener("click", function(){
-            document.querySelector(".popup").style.display = "block";
+document.querySelector("#info").addEventListener("click", function () {
+	document.querySelector(".popup").style.display = "block";
 });
 
-document.querySelector("#close").addEventListener("click", function(){
-    document.querySelector(".popup").style.display = "none";
+document.querySelector("#close").addEventListener("click", function () {
+	document.querySelector(".popup").style.display = "none";
 });
 
 // Settings pop-up
 
-document.querySelector("#settings").addEventListener("click", function(){
-    document.querySelector(".SettingsPopup").style.display = "block";
+document.querySelector("#settings").addEventListener("click", function () {
+	document.querySelector(".SettingsPopup").style.display = "block";
 });
 
-document.querySelector("#Xclose").addEventListener("click", function(){
-document.querySelector(".SettingsPopup").style.display = "none";
+document.querySelector("#Xclose").addEventListener("click", function () {
+	document.querySelector(".SettingsPopup").style.display = "none";
 });
 
 // Profile pop-up
 
-document.querySelector("#profile").addEventListener("click", function(){
-    document.querySelector(".AccountPopUp").style.display = "block";
+document.querySelector("#profile").addEventListener("click", function () {
+	document.querySelector(".AccountPopUp").style.display = "block";
 });
 
-//document.querySelector("#XcloseProfile").addEventListener("click", function(){
-//document.querySelector(".AccountPopUp").style.display = "none";
-//});
-
 function darkFunc() {
-// $(document).ready(function(){
-    // $(".toggle").on('click', function(){
-        let current_theme = $("html").attr("data-theme");
-console.log(current_theme)
-        if(current_theme == "dark") {
-            $("html").attr("data-theme", "light");
-            console.log("if")
-        }
-        else {
-            $("html").attr("data-theme", "dark");
-            console.log("else")
-        }
-    }
-// })
-
-// function darkFunc() {
-//   var element = document.body;
-//   element.classList.toggle("dark-mode");
-// }
+	let current_theme = $("html").attr("data-theme");
+	console.log(current_theme)
+	if (current_theme == "dark") {
+		$("html").attr("data-theme", "light");
+		console.log("if")
+	}
+	else {
+		$("html").attr("data-theme", "dark");
+		console.log("else")
+	}
+}
 
 // Game Functionality
 
-var code_to_guess = [0,0,0,0];
-var colours = ["red","blue","green","orange","pink","yellow"];
+var code_to_guess = [0, 0, 0, 0];
+var colours = ["red", "blue", "green", "orange", "pink", "yellow"];
 var message = ["Genius!", "Unbelievable!", "Sensational!", "Amazing!", "Great!", "Nice!", "Not Bad!", "Phew, just made it!", "Ooops! Better luck next time!"]
 
-for(let i=0; i<code_to_guess.length; i++){
+for (let i = 0; i < code_to_guess.length; i++) {
 	code_to_guess[i] = Math.floor(Math.random() * colours.length);
 }
 
@@ -81,21 +69,22 @@ function row_change() {
 
 	active_row += 1;
 
-	if(active_row>1){
+	if (active_row > 1) {
 
 		console.log("guess check started")
-        
+
 
 		var comparison_guess = code_to_guess.slice();
 		var user_guess = [];
 
-		const boxes_in_previous_row = document.getElementsByClassName("row-"+(active_row-1));
+		const boxes_in_previous_row = document.getElementsByClassName("row-" + (active_row - 1));
 
-        if(active_row>1 & active_row<9){
-        document.getElementById("arrow-row-"+(active_row)).style.display = 'block';
-        document.getElementById("arrow-row-"+(active_row-1)).style.display = 'none';}
+		if (active_row > 1 & active_row < 9) {
+			document.getElementById("arrow-row-" + (active_row)).style.display = 'block';
+			document.getElementById("arrow-row-" + (active_row - 1)).style.display = 'none';
+		}
 
-		for(let i=0; i<code_to_guess.length; i++) {
+		for (let i = 0; i < code_to_guess.length; i++) {
 			var guess = boxes_in_previous_row[i].getAttribute("data-colour_id");
 			user_guess.push(guess);
 		}
@@ -108,12 +97,12 @@ function row_change() {
 		var out_of_place_count = 0;
 		var correct_place_count = 0;
 
-		for(let i=0; i<comparison_guess.length; i++) {
+		for (let i = 0; i < comparison_guess.length; i++) {
 
 			var guess = user_guess[i]
 			var actual = comparison_guess[i];
 
-			if(parseInt(guess)==actual){
+			if (parseInt(guess) == actual) {
 				//console.log("guess matched");
 				correct_place_count += 1;
 				user_guess.splice(i, 1);
@@ -122,15 +111,15 @@ function row_change() {
 			}
 		}
 
-		for(let i=0; i<user_guess.length; i++) {
+		for (let i = 0; i < user_guess.length; i++) {
 
 			var guess = user_guess[i]
 
-			for(let j=0; j<comparison_guess.length; j++) {
+			for (let j = 0; j < comparison_guess.length; j++) {
 
 				var possible_match = comparison_guess[j];
 
-				if(parseInt(guess)==possible_match){
+				if (parseInt(guess) == possible_match) {
 					console.log("guess matched wrong pos.");
 					out_of_place_count += 1;
 					user_guess.splice(i, 1);
@@ -141,13 +130,13 @@ function row_change() {
 			}
 
 		}
-		if(correct_place_count==4){
+		if (correct_place_count == 4) {
 			correct_guess = true;
-			pass_values(active_row-1);
-			var number_guesses = active_row-1;
-			active_row=0;
+			pass_values(active_row - 1);
+			var number_guesses = active_row - 1;
+			active_row = 0;
 
-			let histogram_values = [1,1,1,1,1,1,1,1,1];
+			let histogram_values = [1, 1, 1, 1, 1, 1, 1, 1, 1];
 
 			// async function histogram_results() {
 			// 	const response = await fetch('http://127.0.0.1:5000/histogram', {})
@@ -160,81 +149,81 @@ function row_change() {
 			// histogram_results();
 
 			fetch('http://127.0.0.1:5000/histogram')
-			.then((response) => {
-			return response.json();
-			})
-			.then((values) => {
-			histogram_values = values.result
-			// Creating the bar chart pop-up
-			var xValues = ["1", "2", "3", "4", "5", "6", "7", "8", "Not Guessed"];
-			var yValues = histogram_values;
-			console.log(histogram_values);
+				.then((response) => {
+					return response.json();
+				})
+				.then((values) => {
+					histogram_values = values.result
+					// Creating the bar chart pop-up
+					var xValues = ["1", "2", "3", "4", "5", "6", "7", "8", "Not Guessed"];
+					var yValues = histogram_values;
+					console.log(histogram_values);
 
-			var barColors = ["violet", "indigo", "blue", "green", "yellow", "orange", "red", "pink", "grey"];
+					var barColors = ["violet", "indigo", "blue", "green", "yellow", "orange", "red", "pink", "grey"];
 
-			new Chart("myChart", {
-			type: "horizontalBar",
-			data: {
-			labels: xValues,
-			datasets: [{
-				backgroundColor: barColors,
-				data: yValues
-			}]
-			},
-			options: {
-				legend: {display: false},
-				title: {
-				display: true,
-				text: "Your Stats"
-				},
-				scales: {
-				xAxes: [{ticks: {min: 0, max:values.max+1}}],
-				yAxes: [ {
-					display: true,
-					scaleLabel: {
-					display: true,
-					labelString: 'Number of Tries'
-					}
-				} ]
-				}
-			}
-			});
-			});
+					new Chart("myChart", {
+						type: "horizontalBar",
+						data: {
+							labels: xValues,
+							datasets: [{
+								backgroundColor: barColors,
+								data: yValues
+							}]
+						},
+						options: {
+							legend: { display: false },
+							title: {
+								display: true,
+								text: "Your Stats"
+							},
+							scales: {
+								xAxes: [{ ticks: { min: 0, max: values.max + 1 } }],
+								yAxes: [{
+									display: true,
+									scaleLabel: {
+										display: true,
+										labelString: 'Number of Tries'
+									}
+								}]
+							}
+						}
+					});
+				});
 
 			console.log(histogram_values)
 			// var json_list = fetch('http://127.0.0.1:5000/histogram');
- 			// console.log(json_list)
+			// console.log(json_list)
 		}
 
-        console.log(active_row)
-        console.log(user_guess.length)
+		console.log(active_row)
+		console.log(user_guess.length)
 
-        if(correct_guess){
-            document.getElementById("Message").innerHTML = message[number_guesses - 1];
-            document.getElementById("game-stat").innerHTML = "You guessed the Colourdle in " + [number_guesses] + " out of 8 tries!";
-            document.getElementById("success").style.display = "block";
-            }
+		if (correct_guess) {
+			document.getElementById("Message").innerHTML = message[number_guesses - 1];
+			document.getElementById("game-stat").innerHTML = "You guessed the Colourdle in " + [number_guesses] + " out of 8 tries!";
+			document.getElementById("success").style.display = "block";
+		}
 
 
-        if(active_row==9){
-            console.log("check")
-            document.getElementById("Message").innerHTML = message[8];
-            document.getElementById("success").style.display = "block";
+		if (active_row == 9) {
+			console.log("check")
+			document.getElementById("Message").innerHTML = message[8];
+			document.getElementById("success").style.display = "block";
 			pass_values(9); // Passing 9 for not guessed within 8 tries
-            }
-        
-            document.getElementById("MessageClose").addEventListener("click", function(){
-                location.reload(document.querySelector(".popup").style.display = "none");
-            });
+		}
+
+		document.getElementById("MessageClose").addEventListener("click", function () {
+			location.reload(document.querySelector(".popup").style.display = "none");
+		});
 	}
 
-	$('#correct_place_row_'+(active_row-1)).text(correct_place_count);
-	$('#correct_place_row_'+(active_row-1)).css("background-color", "YellowGreen");
+	$('#correct_place_row_' + (active_row - 1)).text(correct_place_count);
+	$('#correct_place_row_' + (active_row - 1)).css("background-color", "YellowGreen");
 
-	$('#out_of_place_row_'+(active_row-1)).text(out_of_place_count);
-	$('#out_of_place_row_'+(active_row-1)).css("background-color", "orange");
+	$('#out_of_place_row_' + (active_row - 1)).text(out_of_place_count);
+	$('#out_of_place_row_' + (active_row - 1)).css("background-color", "orange");
 
-	$('.row-'+(active_row-1)).css('pointer-events', 'none');
+	$('.row-' + (active_row - 1)).css('pointer-events', 'none');
 
 	// if(correct_guess){
 	// 	active_row=0;
@@ -245,14 +234,14 @@ function row_change() {
 	$('#enter_button').css('animation', 'none');
 	$('#enter_button').text('Enter Guess');
 
-	$('.row-'+active_row).click(function(event) {
+	$('.row-' + active_row).click(function (event) {
 
-		var box_id = "#"+$(this).attr('id');
+		var box_id = "#" + $(this).attr('id');
 
 		animateCSS(document.getElementById($(this).attr('id')), 'bounceIn');
-	  
-		$(box_id).attr('data-colour_id', ((parseInt($(box_id).attr('data-colour_id'))+1)%colours.length))
-	  
+
+		$(box_id).attr('data-colour_id', ((parseInt($(box_id).attr('data-colour_id')) + 1) % colours.length))
+
 		$(box_id).css('background-color', colours[parseInt($(box_id).attr('data-colour_id'))]);
 
 		// animateCSS(document.getElementById($(this).attr('id')), 'flipInX');
@@ -262,31 +251,31 @@ function row_change() {
 		//var box_element = document.getElementById($(this).attr('id'));
 
 		//console.log(box_element.getAttribute("data-colour_id"));
-		
+
 		//box_element.setAttribute('data-colour_id', $(box_id).attr('data-colour_id'));
 
 		//console.log(box_element.getAttribute("data-colour_id"));
 
-		const boxes_in_active_row = document.getElementsByClassName("row-"+active_row);
+		const boxes_in_active_row = document.getElementsByClassName("row-" + active_row);
 
 		var valid_row_input = true;
 
-		for(let box of boxes_in_active_row){
+		for (let box of boxes_in_active_row) {
 
 			var check = box.getAttribute("data-colour_id");
-			if(check=='-1'){
+			if (check == '-1') {
 				valid_row_input = false;
 			}
 
 		}
 
-		if(valid_row_input){
+		if (valid_row_input) {
 			$('#enter_button').css('pointer-events', 'auto');
 			$('#enter_button').css('opacity', '100%');
 			$('#enter_button').text('Check!');
 		}
-	
-	
+
+
 	});
 
 
@@ -294,26 +283,26 @@ function row_change() {
 
 const animateCSS = (element, animation, prefix = 'animate__') =>
 
-  // We create a Promise and return it
-  new Promise((resolve, reject) => {
-    const animationName = `${prefix}${animation}`;
-    // const node = document.querySelector(element);
-    const node = element
-	node.style.setProperty("pointer-events", "none");
-    node.style.setProperty('--animate-duration', '0.4s');
-    
-    node.classList.add(`${prefix}animated`, animationName);
+	// We create a Promise and return it
+	new Promise((resolve, reject) => {
+		const animationName = `${prefix}${animation}`;
+		// const node = document.querySelector(element);
+		const node = element
+		node.style.setProperty("pointer-events", "none");
+		node.style.setProperty('--animate-duration', '0.4s');
 
-    // When the animation ends, we clean the classes and resolve the Promise
-    function handleAnimationEnd(event) {
-      event.stopPropagation();
-      node.classList.remove(`${prefix}animated`, animationName);
-	  node.style.setProperty("pointer-events", "auto");
-      resolve('Animation ended');
-    }
+		node.classList.add(`${prefix}animated`, animationName);
 
-    node.addEventListener('animationend', handleAnimationEnd, {once: true});
-});
+		// When the animation ends, we clean the classes and resolve the Promise
+		function handleAnimationEnd(event) {
+			event.stopPropagation();
+			node.classList.remove(`${prefix}animated`, animationName);
+			node.style.setProperty("pointer-events", "auto");
+			resolve('Animation ended');
+		}
+
+		node.addEventListener('animationend', handleAnimationEnd, { once: true });
+	});
 
 // Creating the bar chart pop-up
 var xValues = ["1", "2", "3", "4", "5", "6", "7", "8", "Not Guessed"];
@@ -322,58 +311,56 @@ var yValues = histogram_values;
 var barColors = ["violet", "indigo", "blue", "green", "yellow", "orange", "red", "pink", "grey"];
 
 new Chart("myChart", {
-  type: "horizontalBar",
-  data: {
-  labels: xValues,
-  datasets: [{
-    backgroundColor: barColors,
-    data: yValues
-  }]
-},
-  options: {
-    legend: {display: false},
-    title: {
-      display: true,
-      text: "Your Stats"
-    },
-    scales: {
-      xAxes: [{ticks: {min: 0, max:15}}],
-      yAxes: [ {
-        display: true,
-        scaleLabel: {
-          display: true,
-          labelString: 'Number of Tries'
-        }
-      } ]
-    }
-  }
+	type: "horizontalBar",
+	data: {
+		labels: xValues,
+		datasets: [{
+			backgroundColor: barColors,
+			data: yValues
+		}]
+	},
+	options: {
+		legend: { display: false },
+		title: {
+			display: true,
+			text: "Your Stats"
+		},
+		scales: {
+			xAxes: [{ ticks: { min: 0, max: 15 } }],
+			yAxes: [{
+				display: true,
+				scaleLabel: {
+					display: true,
+					labelString: 'Number of Tries'
+				}
+			}]
+		}
+	}
 });
 
 function pass_values(pass_to_python) {
- 
-				 $.ajax(
-				 {
-					 type:'POST',
-					 contentType:'application/json;charset-utf-08',
-					 dataType:'json',
-					 url:'http://127.0.0.1:5000/pass_val?value='+pass_to_python ,
-					 success:function (data) {
-						 var reply=data.reply;
-						 if (reply=="success")
-						 {
-							 return;
-						 }
-						 else
-							 {
-							 alert("some error ocured in session agent")
-							 }
- 
-					 }
-				 }
-			 );
- }
 
- 
+	$.ajax(
+		{
+			type: 'POST',
+			contentType: 'application/json;charset-utf-08',
+			dataType: 'json',
+			url: 'http://127.0.0.1:5000/pass_val?value=' + pass_to_python,
+			success: function (data) {
+				var reply = data.reply;
+				if (reply == "success") {
+					return;
+				}
+				else {
+					alert("some error ocured in session agent")
+				}
+
+			}
+		}
+	);
+}
+
+
 //  .then((response) => {
 //    return response.json();
 //  })
