@@ -142,21 +142,25 @@ function row_change() {
 		}
 		if(correct_place_count==4){
 			correct_guess = true;
+			pass_values(active_row-1);
+			var number_guesses = active_row-1;
+			active_row=0;
 		}
 
         console.log(active_row)
         console.log(user_guess.length)
         if(correct_guess){
-            document.getElementById("Message").innerHTML = message[active_row - 2];
-            document.getElementById("game-stat").innerHTML = "You guessed the Colourdle in " + [active_row - 1] + " out of 8 tries!";
+            document.getElementById("Message").innerHTML = message[number_guesses - 1];
+            document.getElementById("game-stat").innerHTML = "You guessed the Colourdle in " + [number_guesses] + " out of 8 tries!";
             document.getElementById("success").style.display = "block";
             }
 
 
-        if(correct_guess == false && active_row==9){
+        if(active_row==9){
             console.log("check")
-            document.getElementById("Message").innerHTML = message[7];
+            document.getElementById("Message").innerHTML = message[8];
             document.getElementById("success").style.display = "block";
+			pass_values(9); // Passing 9 for not guessed within 8 tries
             }
         
             document.getElementById("MessageClose").addEventListener("click", function(){
@@ -172,9 +176,9 @@ function row_change() {
 
 	$('.row-'+(active_row-1)).css('pointer-events', 'none');
 
-	if(correct_guess){
-		active_row=0;
-	}
+	// if(correct_guess){
+	// 	active_row=0;
+	// }
 
 	$('#enter_button').css('pointer-events', 'none');
 	$('#enter_button').css('opacity', '40%');
@@ -283,3 +287,27 @@ new Chart("myChart", {
     }
   }
 });
+
+function pass_values(pass_to_python) {
+ 
+				 $.ajax(
+				 {
+					 type:'POST',
+					 contentType:'application/json;charset-utf-08',
+					 dataType:'json',
+					 url:'http://127.0.0.1:5000/pass_val?value='+pass_to_python ,
+					 success:function (data) {
+						 var reply=data.reply;
+						 if (reply=="success")
+						 {
+							 return;
+						 }
+						 else
+							 {
+							 alert("some error ocured in session agent")
+							 }
+ 
+					 }
+				 }
+			 );
+ }

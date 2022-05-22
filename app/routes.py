@@ -1,6 +1,6 @@
 from flask import render_template, url_for, flash, redirect, jsonify
 from flask_login import current_user, login_user
-from app.models import GameUser
+from app.models import Game, GameUser
 
 from app import app 
 from app.forms import LoginForm
@@ -15,12 +15,12 @@ def get_ip():
 def index():
     return render_template("index.html")
 
-gamescore = -1
-
-@app.route('/pass_val',methods=['POST'])
+@app.route('/pass_val',methods=['GET','POST'])
 def pass_val():
-    gamescore=request.args.get('value')
-    # print('value',name)
+    value=request.args.get('value')
+    print("tried to write")
+    gameinfo(value)
+    print('value',value)
     return jsonify({'reply':'success'})
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -55,15 +55,25 @@ def register():
     return render_template('register.html', title='Register', form=form)
 
 @app.route('/gameinfo', methods=['GET', 'POST'])
-def gameinfo():
-        date = datetime.now
-        score = gamescore
-        user_id = form.username.data
+def gameinfo(user_score):
+        date = datetime.today()
+        print("attempting score")
+        score = user_score
+        print("defining form")
+        #form = RegistrationForm()
+        #print("retreiving from form")
+        #user_id = form.username.data
+        print("current_user.username")
+        user_id = current_user.username
+        print("usernam retrieved: {}".format(user_id))
+        print("creating Game row object")
         game = Game(date = date, score = score, user_id = user_id)
+        print("adding row object to database")
         db.session.add(game)
         db.session.commit()
 
-addedscore = False
-if gamescore != -1 and not addedscore:
-    gameinfo()
-    addedscore = True
+# addedscore = False
+# if gamescore != -1 and not addedscore:
+#     print("tried to write")
+#     gameinfo()
+#     addedscore = True
