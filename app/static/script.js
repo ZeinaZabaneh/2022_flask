@@ -315,42 +315,7 @@ const animateCSS = (element, animation, prefix = 'animate__') =>
     node.addEventListener('animationend', handleAnimationEnd, {once: true});
 });
 
-// // Creating the bar chart pop-up
-// var xValues = ["1", "2", "3", "4", "5", "6", "7", "8"];
-// var yValues = histogram_values;
-
-// var barColors = ["violet", "indigo", "blue", "green", "yellow", "orange", "red", "pink", "grey"];
-
-// new Chart("myChart", {
-//   type: "horizontalBar",
-//   data: {
-//   labels: xValues,
-//   datasets: [{
-//     backgroundColor: barColors,
-//     data: yValues
-//   }]
-// },
-//   options: {
-//     legend: {display: false},
-//     title: {
-//       display: true,
-//       text: "Your Stats"
-//     },
-//     scales: {
-//       xAxes: [{ticks: {min: 0, max:15}}],
-//       yAxes: [ {
-//         display: true,
-//         scaleLabel: {
-//           display: true,
-//           labelString: 'Number of Tries'
-//         }
-//       } ]
-//     }
-//   }
-// });
-
 function pass_values(pass_to_python) {
- 
 				 $.ajax(
 				 {
 					 type:'POST',
@@ -367,7 +332,6 @@ function pass_values(pass_to_python) {
 							 {
 							 alert("some error ocured in session agent")
 							 }
- 
 					 }
 				 }
 			 );
