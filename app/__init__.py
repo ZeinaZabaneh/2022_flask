@@ -26,15 +26,15 @@ login = LoginManager(app)
 
 from app import routes, models, colourdle
 
-api = Api(app)
+#api = Api(app)
 
-class Ping(Resource):
+# class Ping(Resource):
 
-    def get(self):
-        return {
-            'status' : 'success',
-            'message' : 'pong.'
-        }
+#     def get(self):
+#         return {
+#             'status' : 'success',
+#             'message' : 'pong.'
+#         }
 
-api.add_resource(Ping, '/ping')
+# api.add_resource(Ping, '/ping')
 

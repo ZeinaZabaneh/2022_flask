@@ -75,6 +75,7 @@ console.log(code_to_guess);
 var correct_guess = false;
 
 var active_row = 0;
+var histogram_values = null;
 
 function row_change() {
 
@@ -142,21 +143,84 @@ function row_change() {
 		}
 		if(correct_place_count==4){
 			correct_guess = true;
+			pass_values(active_row-1);
+			var number_guesses = active_row-1;
+			active_row=0;
+
+			let histogram_values = [1,1,1,1,1,1,1,1,1];
+
+			// async function histogram_results() {
+			// 	const response = await fetch('http://127.0.0.1:5000/histogram', {})
+			// 	const json = await response.json()
+			// 	const value = await json.result
+			// 	histogram_values = value
+			// 	console.log(histogram_values)
+			// }
+
+			// histogram_results();
+
+			fetch('http://127.0.0.1:5000/histogram')
+			.then((response) => {
+			return response.json();
+			})
+			.then((values) => {
+			histogram_values = values.result
+			// Creating the bar chart pop-up
+			var xValues = ["1", "2", "3", "4", "5", "6", "7", "8", "Not Guessed"];
+			var yValues = histogram_values;
+			console.log(histogram_values);
+
+			var barColors = ["violet", "indigo", "blue", "green", "yellow", "orange", "red", "pink", "grey"];
+
+			new Chart("myChart", {
+			type: "horizontalBar",
+			data: {
+			labels: xValues,
+			datasets: [{
+				backgroundColor: barColors,
+				data: yValues
+			}]
+			},
+			options: {
+				legend: {display: false},
+				title: {
+				display: true,
+				text: "Your Stats"
+				},
+				scales: {
+				xAxes: [{ticks: {min: 0, max:values.max+1}}],
+				yAxes: [ {
+					display: true,
+					scaleLabel: {
+					display: true,
+					labelString: 'Number of Tries'
+					}
+				} ]
+				}
+			}
+			});
+			});
+
+			console.log(histogram_values)
+			// var json_list = fetch('http://127.0.0.1:5000/histogram');
+ 			// console.log(json_list)
 		}
 
         console.log(active_row)
         console.log(user_guess.length)
+
         if(correct_guess){
-            document.getElementById("Message").innerHTML = message[active_row - 2];
-            document.getElementById("game-stat").innerHTML = "You guessed the Colourdle in " + [active_row - 1] + " out of 8 tries!";
+            document.getElementById("Message").innerHTML = message[number_guesses - 1];
+            document.getElementById("game-stat").innerHTML = "You guessed the Colourdle in " + [number_guesses] + " out of 8 tries!";
             document.getElementById("success").style.display = "block";
             }
 
 
-        if(correct_guess == false && active_row==9){
+        if(active_row==9){
             console.log("check")
-            document.getElementById("Message").innerHTML = message[7];
+            document.getElementById("Message").innerHTML = message[8];
             document.getElementById("success").style.display = "block";
+			pass_values(9); // Passing 9 for not guessed within 8 tries
             }
         
             document.getElementById("MessageClose").addEventListener("click", function(){
@@ -172,9 +236,9 @@ function row_change() {
 
 	$('.row-'+(active_row-1)).css('pointer-events', 'none');
 
-	if(correct_guess){
-		active_row=0;
-	}
+	// if(correct_guess){
+	// 	active_row=0;
+	// }
 
 	$('#enter_button').css('pointer-events', 'none');
 	$('#enter_button').css('opacity', '40%');
@@ -252,9 +316,10 @@ const animateCSS = (element, animation, prefix = 'animate__') =>
 });
 
 // Creating the bar chart pop-up
-var xValues = ["1", "2", "3", "4", "5", "6", "7", "8"];
-var yValues = [1, 3, 8, 4, 2, 3, 5, 3];
-var barColors = ["violet", "indigo", "blue", "green", "yellow", "orange", "red", "pink"];
+var xValues = ["1", "2", "3", "4", "5", "6", "7", "8", "Not Guessed"];
+var yValues = histogram_values;
+
+var barColors = ["violet", "indigo", "blue", "green", "yellow", "orange", "red", "pink", "grey"];
 
 new Chart("myChart", {
   type: "horizontalBar",
@@ -283,3 +348,35 @@ new Chart("myChart", {
     }
   }
 });
+
+function pass_values(pass_to_python) {
+ 
+				 $.ajax(
+				 {
+					 type:'POST',
+					 contentType:'application/json;charset-utf-08',
+					 dataType:'json',
+					 url:'http://127.0.0.1:5000/pass_val?value='+pass_to_python ,
+					 success:function (data) {
+						 var reply=data.reply;
+						 if (reply=="success")
+						 {
+							 return;
+						 }
+						 else
+							 {
+							 alert("some error ocured in session agent")
+							 }
+ 
+					 }
+				 }
+			 );
+ }
+
+ 
+//  .then((response) => {
+//    return response.json();
+//  })
+//  .then((myJson) => {
+//    console.log("When I add "+first+" and "+second+" I get: " + myJson.result);
+//  });
