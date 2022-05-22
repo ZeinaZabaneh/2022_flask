@@ -1,0 +1,339 @@
+commit 3c13230fc43b9c8395432d05b75a880e5858f8e5
+Merge: 32439ab 39beeb7
+Author: ZeinaZabaneh <10476052@uwa.student.edu.au>
+Date:   Mon May 23 01:25:35 2022 +0800
+
+    finished app
+
+commit 32439ab7cd644a483c477a7d6eaeab4e1f704389
+Author: ZeinaZabaneh <10476052@uwa.student.edu.au>
+Date:   Mon May 23 01:07:47 2022 +0800
+
+    Testing Complete
+
+commit 39beeb7a8a372718348d1c221326eeaa3ef0b547
+Author: Ben Willcocks <ben@bens-mbp.lan>
+Date:   Mon May 23 01:04:54 2022 +0800
+
+    added architecture to read me file, removed some commented lines in index.html
+
+commit 0110c34a9036cf5548bff0b5a5720b40168b9a57
+Author: Ben Willcocks <ben@bens-mbp.lan>
+Date:   Sun May 22 23:47:16 2022 +0800
+
+    updated values in the histogram to reflect actual score
+
+commit 9e10a09ae178354380612ac578a38572a0188f68
+Author: ZeinaZabaneh <10476052@uwa.student.edu.au>
+Date:   Sun May 22 22:51:30 2022 +0800
+
+    Cleanup of code
+
+commit ae6a6db271581a00e3c8fdddf18fb1d7bf779778
+Merge: 7042a80 f18cba3
+Author: ZeinaZabaneh <10476052@uwa.student.edu.au>
+Date:   Sun May 22 22:07:56 2022 +0800
+
+    Merge branch 'Ben' of https://github.com/ZeinaZabaneh/2022_flask into Zeina
+
+commit f18cba3ff39c8f357285111f598b5f3e30c29c2a
+Author: Ben Willcocks <ben@bens-mbp.lan>
+Date:   Sun May 22 22:07:13 2022 +0800
+
+    added passing functionality between python to javascript, passing cleaned query to database for display of histogram values
+    
+    d
+
+commit 7042a807e54ecad5c879b8395248bb47950c836c
+Author: ZeinaZabaneh <10476052@uwa.student.edu.au>
+Date:   Sun May 22 22:06:09 2022 +0800
+
+    start of testing
+
+commit 73b06390939235eb6540125415c2bfeabb12f527
+Author: Ben Willcocks <ben@bens-mbp.lan>
+Date:   Sun May 22 20:17:06 2022 +0800
+
+    added putting values into the game database when the user completes the game, 9 value for incomplete
+
+commit 8069e032b80f97317db812c35ef36c480dea9325
+Author: ZeinaZabaneh <10476052@uwa.student.edu.au>
+Date:   Sun May 22 19:04:08 2022 +0800
+
+    completed game table
+
+commit 9d217e0794d665db9e6d557a24a4183e48d7ae6e
+Author: ZeinaZabaneh <10476052@uwa.student.edu.au>
+Date:   Sun May 22 17:01:22 2022 +0800
+
+    addition of game table and registration form
+
+commit 1a6c00334bdb35f3b9f9083bf73fd8a8bda5e379
+Author: ZeinaZabaneh <10476052@uwa.student.edu.au>
+Date:   Sun May 22 13:39:34 2022 +0800
+
+    Success messages completed for end of game
+
+commit c689189317451c4bbbbd7ab1304eed221c45f98c
+Author: ZeinaZabaneh <10476052@uwa.student.edu.au>
+Date:   Sun May 22 01:05:41 2022 +0800
+
+    Wrote README file and started testing setup
+
+commit d260267014120e8e7d23c82d9010e0261dd86e31
+Merge: ac37e72 131a94b
+Author: ZeinaZabaneh <10476052@uwa.student.edu.au>
+Date:   Sat May 21 22:56:01 2022 +0800
+
+    Merge branch 'Ben' of https://github.com/ZeinaZabaneh/2022_flask into Zeina
+
+commit ac37e726861f93e6162af269c42c6190644cb05a
+Merge: 89721cc 5016e40
+Author: ZeinaZabaneh <10476052@uwa.student.edu.au>
+Date:   Sat May 21 22:55:44 2022 +0800
+
+    minor changes
+
+commit 131a94b9c3f1d015507d7811b115504ac520d082
+Author: Ben Willcocks <ben@bens-mbp.lan>
+Date:   Sat May 21 22:55:00 2022 +0800
+
+    added correct import for Jsonify
+
+commit 89721cc72c42a3ccf740915f761e33698614c25e
+Merge: f92ca7e 3fd1ef8
+Author: ZeinaZabaneh <10476052@uwa.student.edu.au>
+Date:   Sat May 21 22:48:44 2022 +0800
+
+    committing changes to pull from Ben
+
+commit 5016e403ed08626ade0cb6f50995e5ca72f293ab
+Author: Ben Willcocks <ben@bens-mbp.lan>
+Date:   Sat May 21 22:47:28 2022 +0800
+
+    fixed dummy varibale number_guesses and added check for active row exceeding 8, javascript values succesfully passing to python route file
+
+commit f92ca7eaf1cd4b2c2496442ff0ca7db047c2844b
+Author: ZeinaZabaneh <10476052@uwa.student.edu.au>
+Date:   Sat May 21 22:40:59 2022 +0800
+
+    Adding message on completion of game
+
+commit 3fd1ef881e390018c1439217d522ca4a81e3d735
+Author: Ben Willcocks <ben@bens-mbp.lan>
+Date:   Sat May 21 22:30:20 2022 +0800
+
+    number of guesses dummy variable for end game display list, initial functionality for javascript to python variable sharing
+
+commit 58608654480fcff773991d3f77e5acaeb1a64a64
+Author: ZeinaZabaneh <10476052@uwa.student.edu.au>
+Date:   Sat May 21 22:28:16 2022 +0800
+
+    adding completion message
+
+commit 7f55131b4f449bb1153e4da5d9a1439a5dfc7906
+Author: ZeinaZabaneh <10476052@uwa.student.edu.au>
+Date:   Sat May 21 20:26:20 2022 +0800
+
+    database created
+
+commit c580cabea1ad5b6e42cee6f6247c12333323218b
+Merge: fa3bfdf d32bdf6
+Author: ZeinaZabaneh <10476052@uwa.student.edu.au>
+Date:   Sat May 21 13:05:57 2022 +0800
+
+    Merge branch 'Ben' of https://github.com/ZeinaZabaneh/2022_flask into Zeina
+
+commit fa3bfdf863fb5cde91bd62f045d925cb67e9ad59
+Author: ZeinaZabaneh <10476052@uwa.student.edu.au>
+Date:   Sat May 21 13:04:36 2022 +0800
+
+    beginning of db creation
+
+commit 74fb44d1d994df15faa9c8ceb9285b79081dcb5f
+Author: ZeinaZabaneh <10476052@uwa.student.edu.au>
+Date:   Fri May 20 22:58:48 2022 +0800
+
+    start of db
+
+commit 782e51f05caa4dc7e88bc01ff5ea89bf7f05ecf0
+Author: ZeinaZabaneh <10476052@uwa.student.edu.au>
+Date:   Fri May 20 22:07:40 2022 +0800
+
+    changes to responsive design
+
+commit d32bdf633e255480998f535cb15f8aa16e2b76a0
+Author: Ben Willcocks <ben@bens-mbp.lan>
+Date:   Fri May 20 22:03:22 2022 +0800
+
+    added random code generation, next aaddition to include daily code, added functionality to stop click events once guess is correctly entered
+
+commit 070a0f56a7467f86f3fc8893ae162e73ea02b5b3
+Author: ZeinaZabaneh <10476052@uwa.student.edu.au>
+Date:   Fri May 20 20:45:50 2022 +0800
+
+    flask app
+
+commit a4a19a979697e3dd14464cd5f84755c8d3f39453
+Author: ZeinaZabaneh <10476052@uwa.student.edu.au>
+Date:   Fri May 20 12:24:59 2022 +0800
+
+    Working version with css
+
+commit 3aaacd6e1164f62e3e6e54543bafb0d5e24d5b48
+Author: ZeinaZabaneh <10476052@uwa.student.edu.au>
+Date:   Fri May 20 11:21:23 2022 +0800
+
+    Setup Colourdle Flask
+
+commit 769161d7b2b23f55f7b55199ad5a23b002675c84
+Author: ZeinaZabaneh <89188116+ZeinaZabaneh@users.noreply.github.com>
+Date:   Fri May 20 09:55:17 2022 +0800
+
+    Create README.md
+
+commit 4817f655542a347590bfea1e0fac7030b797e76b
+Author: ZeinaZabaneh <89188116+ZeinaZabaneh@users.noreply.github.com>
+Date:   Fri May 20 09:54:52 2022 +0800
+
+    Initial commit
+
+
+***NOTE: 2 REPO's used. Providing logs from both***
+
+commit 217ee1af6cc4754578cc65d9085e7dfe5cb2882d
+Author: ZeinaZabaneh <10476052@uwa.student.edu.au>
+Date:   Thu May 19 23:09:34 2022 +0800
+
+    added arrow rows, completed dark mode toggle and mobile responsiveness
+
+commit eee7cc1c7b5d54494b102c413f9c59ae02c7cbca
+Author: Ben Willcocks <ben@bens-mbp.lan>
+Date:   Tue May 17 21:46:32 2022 +0800
+
+    some animations added on boxes
+
+commit f9ccc7428c056d01b92e90c3c0312127d1759e6f
+Author: Ben Willcocks <ben@bens-mbp.lan>
+Date:   Tue May 17 20:53:32 2022 +0800
+
+    hint box function working for both green and orange boxes
+
+commit bf094a78673a30ad6cfd40aec354e44667fbfb10
+Author: Ben Willcocks <ben@bens-mbp.lan>
+Date:   Tue May 17 18:18:39 2022 +0800
+
+    hint box function working for correct guesses
+
+commit 890092807d9ac9b52d0fcf66e3e533c324ed594a
+Author: Ben Willcocks <ben@bens-mbp.lan>
+Date:   Tue May 17 17:59:01 2022 +0800
+
+    hint box function partialy complete
+
+commit a452c2aba31a20e276c9ed8532ccbd968240c76e
+Author: Ben Willcocks <ben@bens-mbp.lan>
+Date:   Tue May 17 16:19:04 2022 +0800
+
+    check guess and enter button working, hint box functionality not present
+
+commit 1c99bd55f6eae432815782622838876174dd625c
+Author: Ben Willcocks <ben@bens-mbp.lan>
+Date:   Tue May 17 14:42:23 2022 +0800
+
+    colour change complete and working, data-colour_id value not being updated
+
+commit c225586cf22aeb576927e988314c90d5520102d2
+Author: Ben Willcocks <ben@bens-mbp.lan>
+Date:   Tue May 17 10:35:00 2022 +0800
+
+    colour changing working but allowing previous row to be altered
+
+commit 05422fcd163184b6aa08d0c0f1bad1f3739866aa
+Merge: 249b2fc 136300e
+Author: Ben Willcocks <ben@bens-mbp.lan>
+Date:   Mon May 16 22:30:19 2022 +0800
+
+    pull changes resolving 2
+
+commit 249b2fc09eac4042b9b815c3b0d3e21e07555293
+Author: Ben Willcocks <ben@bens-mbp.lan>
+Date:   Mon May 16 22:24:53 2022 +0800
+
+    pull changes resolving
+
+commit 136300e23de15af5613829717d74eb79ed4e7b89
+Merge: 72b4b0c 117469a
+Author: ZeinaZabaneh <10476052@uwa.student.edu.au>
+Date:   Mon May 16 22:20:55 2022 +0800
+
+    merged changes with Ben's branch
+
+commit 22d4869390e42ca85bc9ecefc5fe07182e911d7b
+Merge: 117469a 72b4b0c
+Author: Ben Willcocks <ben@bens-mbp.lan>
+Date:   Mon May 16 22:17:41 2022 +0800
+
+    pull changes resolving
+
+commit 72b4b0c8c47447629e1cb10c5da1c2cab0e99f9a
+Author: ZeinaZabaneh <10476052@uwa.student.edu.au>
+Date:   Mon May 16 21:58:43 2022 +0800
+
+    information pop-up widow added
+
+commit 117469a14bf20d1a8fb43bd526b936c43ddcc347
+Author: Ben Willcocks <ben@bens-mbp.lan>
+Date:   Mon May 16 21:56:15 2022 +0800
+
+    added color box changing function
+
+commit 088df3411e5d79d3e11e9e6e727b84133040634a
+Author: Ben Willcocks <ben@bens-mbp.lan>
+Date:   Mon May 16 21:55:31 2022 +0800
+
+    added color box changing function
+
+commit 93506f087b9ecf62a35d8959336722edbc786db9
+Author: ZeinaZabaneh <10476052@uwa.student.edu.au>
+Date:   Sun May 15 23:19:41 2022 +0800
+
+    additional minor formatting changes to size of grid and footer
+
+commit 9750cf3305db5ff85dc0a11d983fd26388e99496
+Author: ZeinaZabaneh <10476052@uwa.student.edu.au>
+Date:   Sun May 15 23:07:29 2022 +0800
+
+    formatting changes to navbar
+
+commit 5135d7cc566a9192a42e3f5f4bc1834e861fe7b1
+Author: ZeinaZabaneh <10476052@uwa.student.edu.au>
+Date:   Sun May 15 22:07:20 2022 +0800
+
+    minor changes to structure of grid
+    
+    '
+
+commit 8ad40155d90969f9ba36686ebc18d05a64c52852
+Author: ZeinaZabaneh <10476052@uwa.student.edu.au>
+Date:   Sun May 15 21:48:38 2022 +0800
+
+    grid structure on html file and initial style
+
+commit 4d2ee8ab5cbd3087b5faee1c707309bac860cb46
+Author: ZeinaZabaneh <10476052@uwa.student.edu.au>
+Date:   Sat May 14 11:14:37 2022 +0800
+
+    adding script file
+
+commit c20805dfbd0c45f947d91731005b011d6cf00495
+Author: ZeinaZabaneh <10476052@uwa.student.edu.au>
+Date:   Fri May 13 22:23:25 2022 +0800
+
+    start of html file
+
+commit f556f30d070ff3c67273e14299600396935ebdbd
+Author: ZeinaZabaneh <10476052@uwa.student.edu.au>
+Date:   Fri May 13 22:17:02 2022 +0800
+
+    first commit
