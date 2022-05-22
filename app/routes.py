@@ -72,8 +72,19 @@ def gameinfo(user_score):
         db.session.add(game)
         db.session.commit()
 
-# addedscore = False
-# if gamescore != -1 and not addedscore:
-#     print("tried to write")
-#     gameinfo()
-#     addedscore = True
+@app.route("/histogram",methods=['GET'])
+def histogram():
+    data = Game.query.filter_by(user_id=current_user.username)
+    scores = [score_entry.score for score_entry in data]
+    totals = []
+    max_score = 0
+    for i in range(10):
+        score_count = 0
+        for score in scores:
+            if score==i:
+                score_count +=1
+        totals.append(score_count)
+        if score_count > max_score:
+            max_score = score_count
+
+    return(jsonify({"result":totals,"max":max_score}))
