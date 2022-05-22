@@ -84,39 +84,26 @@
         <div class="container-fluid">
           <div class="navbar-header">
             <a class="navbar-brand" href="#">Colourdle</a>
-            <!-- <li class="nav-item"> -->
             <a href="#" class="nav-link d-flex flex-column">
               <i class="fa-solid fa-circle-info dark" id="info"></i>
             </a>
-            <a href="#" class="nav-link d-flex flex-column">
+            <a href="login" class="nav-link d-flex flex-column">
               <i class="fa-solid fa-user dark" id="profile"></i>
             </a>
-            <!-- </li> -->
-            <!-- <li class="nav-item"> -->
             <a href="#" class="nav-link d-flex flex-column">
               <i class="fa-solid fa-gear dark" id="settings"></i>
             </a>
-            <!-- <button
-                class="navbar-toggler"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#navbarNav"
-                aria-controls="navbarNav"
-                aria-expanded="false"
-                aria-label="Toggle navigation"
-              >
-                <span class="navbar-toggler-icon"></span>
-              </button> -->
           </div>
-          <!-- <div class="collapse navbar-collapse" id="navbarNav">
-              <ul class="navbar-nav">
-  
-                </li>
-              </ul>
-            </div> -->
         </div>
       </nav>
     </header>
+    {% block content %}
+    <h1 id="Welcome">Hi, {{ current_user.username }}!</h1>
+    {% for post in posts %}
+    <div>
+      <p>{{ post.author.username }} says: <b>{{ post.body }}</b></p>
+    </div>
+    {% endfor %} {% endblock %}
     <section class="game-area">
       <div class="game">
         <!-- <div class="grid-container" id="arrow-container">

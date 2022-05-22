@@ -98,12 +98,26 @@ html, body{
     right: 5%;
 }
 
-#HowToPlay, #Settings, #Profile, #Message{
+#HowToPlay, #Settings, #Message{
     font-family: 'Pacifico', cursive;
     font-size: 35px;
     text-align: center;
     padding-top: 20px;
     
+}
+
+#Profile, #register{
+    font-family: 'Pacifico', cursive;
+    font-size: 35px;
+    text-align: center;
+    padding-top: 120px;
+}
+
+#Welcome{
+    text-align: right;
+    font-family: 'Pacifico', cursive;
+    padding-right: 20px;
+    font-size: 24px;
 }
 
 /* Dark Mode Toggler */
@@ -432,4 +446,13 @@ padding-top: 40px;}
         85% {background-color: violet;}
         to {background-color: red;}
        }
+    
+form{
+    align-items: center;
+    text-align: center;
+}
+
+#registerUser{
+    text-align: center;
+}
     
