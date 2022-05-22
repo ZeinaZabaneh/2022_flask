@@ -4,6 +4,7 @@ from app.models import GameUser
 
 from app import app 
 from app.forms import LoginForm
+from datetime import datetime
 
 from flask import request  
 def get_ip(): 
@@ -14,10 +15,12 @@ def get_ip():
 def index():
     return render_template("index.html")
 
+gamescore = -1
+
 @app.route('/pass_val',methods=['POST'])
 def pass_val():
-    name=request.args.get('value')
-    print('value',name)
+    gamescore=request.args.get('value')
+    # print('value',name)
     return jsonify({'reply':'success'})
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -50,3 +53,17 @@ def register():
         flash('Congratulations, you are now a registered user!')
         return redirect(url_for('login'))
     return render_template('register.html', title='Register', form=form)
+
+@app.route('/gameinfo', methods=['GET', 'POST'])
+def gameinfo():
+        date = datetime.now
+        score = gamescore
+        user_id = form.username.data
+        game = Game(date = date, score = score, user_id = user_id)
+        db.session.add(game)
+        db.session.commit()
+
+addedscore = False
+if gamescore != -1 and not addedscore:
+    gameinfo()
+    addedscore = True
