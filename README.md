@@ -69,10 +69,6 @@ Then start the webserver in TestingConfig, and run
 
 via localhost
 
-## Built With
-
-vim and git
-
 ## Authors
 
 - **Ben Willcocks (22260513) & Zeina Zabaneh (10476052)**

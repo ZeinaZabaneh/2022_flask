@@ -64,7 +64,7 @@ console.log(current_theme)
 
 var code_to_guess = [0,0,0,0];
 var colours = ["red","blue","green","orange","pink","yellow"];
-var message = ["Genius!", "Unbelievable!", "Sensational!", "Amazing!", "Great!", "Not Bad!", "Phew, just made it!", "Ooops! Better luck next time!"]
+var message = ["Genius!", "Unbelievable!", "Sensational!", "Amazing!", "Great!", "Nice!", "Not Bad!", "Phew, just made it!", "Ooops! Better luck next time!"]
 
 for(let i=0; i<code_to_guess.length; i++){
 	code_to_guess[i] = Math.floor(Math.random() * colours.length);
@@ -147,14 +147,16 @@ function row_change() {
         console.log(active_row)
         console.log(user_guess.length)
         if(correct_guess){
-            document.getElementById("Message").innerHTML = message[active_row - 2]
-            document.getElementById("success").style.display = "block"
+            document.getElementById("Message").innerHTML = message[active_row - 2];
+            document.getElementById("game-stat").innerHTML = "You guessed the Colourdle in " + [active_row - 1] + " out of 8 tries!";
+            document.getElementById("success").style.display = "block";
             }
-        
+
+
         if(correct_guess == false && active_row==9){
             console.log("check")
-            document.getElementById("Message").innerHTML = message[7]
-            document.getElementById("success").style.display = "block"
+            document.getElementById("Message").innerHTML = message[7];
+            document.getElementById("success").style.display = "block";
             }
         
             document.getElementById("MessageClose").addEventListener("click", function(){
@@ -247,4 +249,37 @@ const animateCSS = (element, animation, prefix = 'animate__') =>
     }
 
     node.addEventListener('animationend', handleAnimationEnd, {once: true});
+});
+
+// Creating the bar chart pop-up
+var xValues = ["1", "2", "3", "4", "5", "6", "7", "8"];
+var yValues = [1, 3, 8, 4, 2, 3, 5, 3];
+var barColors = ["violet", "indigo", "blue", "green", "yellow", "orange", "red", "pink"];
+
+new Chart("myChart", {
+  type: "horizontalBar",
+  data: {
+  labels: xValues,
+  datasets: [{
+    backgroundColor: barColors,
+    data: yValues
+  }]
+},
+  options: {
+    legend: {display: false},
+    title: {
+      display: true,
+      text: "Your Stats"
+    },
+    scales: {
+      xAxes: [{ticks: {min: 0, max:15}}],
+      yAxes: [ {
+        display: true,
+        scaleLabel: {
+          display: true,
+          labelString: 'Number of Tries'
+        }
+      } ]
+    }
+  }
 });

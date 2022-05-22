@@ -75,6 +75,10 @@ html, body{
      overflow:auto;
  }
 
+ #game-stat{
+     text-align: center;
+ }
+
  #close {
     display: block;
     width: 150px;
